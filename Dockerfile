@@ -29,7 +29,7 @@ RUN  mkdir /opt/cdbg && \
 RUN java -agentpath:/opt/cdbg/cdbg_java_agent.so \
     -Dcom.google.cdbg.module=MODULE \
     -Dcom.google.cdbg.version=VERSION \
-    -jar ${JAR_FILE}
+    -jar target/codestate-0.0.1-SNAPSHOT.jar
 
 
 # Run the jar file 
