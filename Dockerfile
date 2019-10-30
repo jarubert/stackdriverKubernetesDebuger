@@ -30,7 +30,7 @@ RUN  mkdir /opt/cdbg && \
 #    -Dcom.google.cdbg.module=codestate \
 #    -Dcom.google.cdbg.version=0.0.1 \
 #    -jar codestate.jar
-
+# codestatebkend:latest
 
 # Run the jar file 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-agentpath:/opt/cdbg/cdbg_java_agent.so", " -Dcom.google.cdbg.module=codestate", "-Dcom.google.cdbg.version=0.0.1", "-jar","/codestate.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-agentpath:/opt/cdbg/cdbg_java_agent.so", " -Dcom.google.cdbg.module=codestatebkend", "-Dcom.google.cdbg.version=latest", "-jar","/codestate.jar"]
