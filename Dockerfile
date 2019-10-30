@@ -16,6 +16,10 @@ ARG JAR_FILE=target/codestate-0.0.1-SNAPSHOT.jar
 # Add the application's jar to the container
 ADD ${JAR_FILE} codestate.jar
 
+RUN  apt-get update \
+  && apt-get install -y wget \
+  && rm -rf /var/lib/apt/lists/*
+
 # Create a directory for the Debugger. Add and unzip the agent in the directory.
 RUN  mkdir /opt/cdbg && \
      wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz | \
