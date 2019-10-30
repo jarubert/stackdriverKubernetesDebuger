@@ -26,11 +26,11 @@ RUN  mkdir /opt/cdbg && \
      tar xvz -C /opt/cdbg
 
 # Start the agent when the app is deployed.
-RUN java -agentpath:/opt/cdbg/cdbg_java_agent.so \
-    -Dcom.google.cdbg.module=MODULE \
-    -Dcom.google.cdbg.version=VERSION \
-    -jar target/codestate-0.0.1-SNAPSHOT.jar
+#RUN java -agentpath:/opt/cdbg/cdbg_java_agent.so \
+#    -Dcom.google.cdbg.module=codestate \
+#    -Dcom.google.cdbg.version=0.0.1 \
+#    -jar codestate.jar
 
 
 # Run the jar file 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/codestate.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-agentpath:/opt/cdbg/cdbg_java_agent.so", " -Dcom.google.cdbg.module=codestate", "-Dcom.google.cdbg.version=0.0.1", "-jar","/codestate.jar"]
